@@ -41,8 +41,8 @@ class listaclientes:
     previous_node=self.primeiro
     current_node = self.primeiro.next
     while current_node.nome!=nome:
-      previous_node=current
-      current_node=current.next
+      previous_node=current_node
+      current_node=current_node.next
     if current_node.next != None:
       previous_node.next=current_node.next
       current_node.next.previous=current_node.previous
