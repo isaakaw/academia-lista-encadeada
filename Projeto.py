@@ -17,17 +17,14 @@ class listaclientes:
     
     pri=self.primeiro
     while pri.next is not None:
-      pri=pri.next
+      pri=pri.next 
+    if cliente.pago=="Nao":
+      pri.next=cliente
+    if cliente.pago=="Sim":
+      cliente.next=self.primeiro
+      self.primeiro.previous=cliente
+      self.primeiro=cliente
       
-    pri.next=cliente
-  
-  def pagamento(self,nome,pago):
-    cliente2=self.primeiro
-    if cliente2 is not None:
-      while cliente2.nome!=nome:
-        cliente2=cliente2.next
-      cliente2.pago=pago    
-    
   def remover(self,nome):
     if self.primeiro is None:
       print("Sem Clientes")
@@ -50,6 +47,16 @@ class listaclientes:
     else:
       previous_node.next=None
       return current_node
+
+  def pagamento(self,nome,pago):
+    cliente2=self.primeiro
+    if cliente2 is not None:
+      while cliente2.nome!=nome:
+        cliente2=cliente2.next
+      cliente2.pago=pago
+      ld=clientes(cliente2.nome,cliente2.pago,cliente2.mens)
+      self.remover(cliente2.nome)
+      self.novo_cliente(ld)
       
   def mostrarlista(self):
     cliente_atual=self.primeiro
