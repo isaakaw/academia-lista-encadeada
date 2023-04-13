@@ -14,16 +14,15 @@ class listaclientes:
     if self.primeiro is None:
       self.primeiro=cliente
       return
-    
-    pri=self.primeiro
-    while pri.next is not None:
-      pri=pri.next 
-    if cliente.pago=="Nao":
-      pri.next=cliente
     if cliente.pago=="Sim":
       cliente.next=self.primeiro
       self.primeiro.previous=cliente
       self.primeiro=cliente
+    if cliente.pago=="Não":
+     pri=self.primeiro
+     while pri.next is not None:
+       pri=pri.next 
+     pri.next=cliente
       
   def remover(self,nome):
     if self.primeiro is None:
